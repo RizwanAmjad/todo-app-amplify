@@ -1,0 +1,6 @@
+.no-item {
+  align-items: flex-end;
+  display: flex;
+  height: 45vh;
+  justify-content: center;
+}

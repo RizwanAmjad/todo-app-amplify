@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react"
+import { Route, Routes } from "react-router-dom"
+
+import NavComponent from "./components/NavComponent"
+import TodosContext from "./context/TodosContext"
+import HomeRoute from "./routes/HomeRoute"
+import NewTodoRoute from "./routes/NewTodoRoute"
+import UpdateTodoRoute from "./routes/UpdateTodoRoute"
 
 function App() {
+  const [todos, setTodos] = useState([])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <TodosContext.Provider value={{ todos, setTodos }}>
+      <NavComponent />
+      <Routes>
+        <Route path="/" element={<HomeRoute />} />
+        <Route path="/new" element={<NewTodoRoute />} />
+        <Route path="/update/:id" element={<UpdateTodoRoute />} />
+        <Route
+          path="*"
+          element={
+            <main style={{ padding: "1rem" }}>
+              <p>There's nothing here!</p>
+            </main>
+          }
+        />
+      </Routes>
+    </TodosContext.Provider>
+  )
 }
 
-export default App;
+export default App

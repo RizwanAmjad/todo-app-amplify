@@ -1,0 +1,13 @@
+.nav {
+  align-items: center;
+  box-shadow: 2px 2px 8px grey;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 0.5rem;
+}
+
+.nav a {
+  color: black;
+  text-decoration: none;
+}

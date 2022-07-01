@@ -1,0 +1,20 @@
+.todo-item {
+  align-items: center;
+  box-shadow: 2px 2px 8px grey;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  margin: 1rem auto;
+}
+
+.controls svg {
+  color: grey;
+  cursor: pointer;
+  margin: auto 1rem;
+  transition: all 0.4s;
+}
+
+.controls svg:hover {
+  color: black;
+}

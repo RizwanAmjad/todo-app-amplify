@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react"
 import * as yup from "yup"
 import { useNavigate, useParams } from "react-router-dom"
-
+import { API, graphqlOperation } from "aws-amplify"
+import { updateTodo } from "../graphql/mutations"
 import TodosContext from "../context/TodosContext"
 import FormComponent from "../components/form/FormComponent"
 import FormInputComponent from "../components/form/FormInputComponent"
@@ -19,12 +20,15 @@ function UpdateTodoRoute(props) {
     description: yup.string().required(),
   })
 
-  const handleUpdateTodo = (todo, { setSubmitting }) => {
+  const handleUpdateTodo = async (todo, { setSubmitting }) => {
     const newTodos = [...todos]
     newTodos[params.id] = todo
     setTodos(newTodos)
     setSubmitting(false)
 
+    const result = await API.graphql(
+      graphqlOperation(updateTodo, { input: { id: currentTodo.id, ...todo } })
+    )
     navigate("/")
   }
 

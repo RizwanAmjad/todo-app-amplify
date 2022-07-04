@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import { Route, Routes } from "react-router-dom"
+import { withAuthenticator } from "@aws-amplify/ui-react"
+import "@aws-amplify/ui-react/styles.css"
 
 import NavComponent from "./components/NavComponent"
 import TodosContext from "./context/TodosContext"
@@ -7,12 +9,12 @@ import HomeRoute from "./routes/HomeRoute"
 import NewTodoRoute from "./routes/NewTodoRoute"
 import UpdateTodoRoute from "./routes/UpdateTodoRoute"
 
-function App() {
+function App({ user, signOut }) {
   const [todos, setTodos] = useState([])
 
   return (
     <TodosContext.Provider value={{ todos, setTodos }}>
-      <NavComponent />
+      <NavComponent email={user.attributes.email} signOut={signOut} />
       <Routes>
         <Route path="/" element={<HomeRoute />} />
         <Route path="/new" element={<NewTodoRoute />} />
@@ -30,4 +32,4 @@ function App() {
   )
 }
 
-export default App
+export default withAuthenticator(App)

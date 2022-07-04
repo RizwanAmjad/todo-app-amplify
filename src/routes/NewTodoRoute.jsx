@@ -1,7 +1,9 @@
 import React, { useContext } from "react"
 import * as yup from "yup"
 import { useNavigate } from "react-router-dom"
+import { API, graphqlOperation } from "aws-amplify"
 
+import { createTodo } from "../graphql/mutations"
 import FormComponent from "../components/form/FormComponent"
 import FormInputComponent from "../components/form/FormInputComponent"
 import FormSubmitComponent from "../components/form/FormSubmitComponent"
@@ -16,11 +18,20 @@ function NewTodoRoute(props) {
     description: yup.string().required(),
   })
 
-  const handleNewTodo = (todo, { setValues, setTouched, setSubmitting }) => {
+  const handleNewTodo = async (
+    todo,
+    { setValues, setTouched, setSubmitting }
+  ) => {
     setTodos([todo, ...todos])
     setValues({ title: "", description: "" })
     setTouched({ title: false, description: false })
     setSubmitting(false)
+
+    const result = await API.graphql(
+      graphqlOperation(createTodo, { input: { ...todo } })
+    )
+    if (result.errors) return alert("Cannot add the Todo")
+
     navigate("/")
   }
 

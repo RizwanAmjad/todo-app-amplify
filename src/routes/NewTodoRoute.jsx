@@ -2,6 +2,7 @@ import React, { useContext } from "react"
 import * as yup from "yup"
 import { useNavigate } from "react-router-dom"
 import { API, graphqlOperation } from "aws-amplify"
+import { Auth } from "aws-amplify"
 
 import { createTodo } from "../graphql/mutations"
 import FormComponent from "../components/form/FormComponent"
@@ -27,8 +28,10 @@ function NewTodoRoute(props) {
     setTouched({ title: false, description: false })
     setSubmitting(false)
 
+    const user = await Auth.currentUserInfo()
+
     const result = await API.graphql(
-      graphqlOperation(createTodo, { input: { ...todo } })
+      graphqlOperation(createTodo, { input: { ...todo, user: user.id } })
     )
     if (result.errors) return alert("Cannot add the Todo")
 

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { API, graphqlOperation } from "aws-amplify"
+import { Auth } from "aws-amplify"
 
 import { listTodos } from "../graphql/queries"
 import { deleteTodo } from "../graphql/mutations"
@@ -17,9 +18,7 @@ function HomeRoute(props) {
     newTodos.splice(index, 1)
     setTodos(newTodos)
 
-    const result = await API.graphql(
-      graphqlOperation(deleteTodo, { input: { id: todo.id } })
-    )
+    await API.graphql(graphqlOperation(deleteTodo, { input: { id: todo.id } }))
   }
 
   const handleUpdate = (index) => {
@@ -29,7 +28,10 @@ function HomeRoute(props) {
   useEffect(() => {
     ;(async () => {
       try {
-        const todoData = await API.graphql(graphqlOperation(listTodos))
+        const user = await Auth.currentUserInfo()
+        const todoData = await API.graphql(
+          graphqlOperation(listTodos, { filter: { user: { eq: user.id } } })
+        )
         const todos = todoData.data.listTodos.items
         const { compare } = Intl.Collator("en-US")
         todos.sort((a, b) => compare(b.createdAt, a.createdAt))

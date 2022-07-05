@@ -4,8 +4,17 @@
   border-radius: 16px;
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem;
+  height: 10rem;
   margin: 1rem auto;
+  overflow: hidden;
+}
+
+.todo-item img {
+  height: 100%;
+}
+
+.todo-item .textual-info {
+  text-align: center;
 }
 
 .controls svg {

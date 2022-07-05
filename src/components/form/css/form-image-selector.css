@@ -1,0 +1,27 @@
+.image-select label {
+  cursor: pointer;
+  display: block;
+}
+
+.image-select svg {
+  color: #71dfe7;
+  height: 6rem;
+  transition: 0.5s all ease-in-out;
+  width: 6rem;
+}
+
+.image-select svg:hover {
+  color: #009dae;
+}
+
+.image-select-btn {
+  display: none;
+}
+
+.preview-image {
+  height: 6rem;
+  margin: 1rem;
+  flex-shrink: 0;
+  object-fit: cover;
+  width: 10rem;
+}

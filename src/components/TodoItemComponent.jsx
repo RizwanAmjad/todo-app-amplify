@@ -1,12 +1,16 @@
-import React from "react"
+import React, { useState } from "react"
 import { RiDeleteBin4Fill, RiEdit2Fill } from "react-icons/ri"
+import { Storage } from "aws-amplify"
 
 import "./css/todo-item.css"
 
-function TodoItemComponent({ title, description, onDelete, onUpdate }) {
+function TodoItemComponent({ title, description, image, onDelete, onUpdate }) {
+  const [signedImage, setSignedImage] = useState("")
+  Storage.get(image).then((value) => setSignedImage(value))
   return (
     <div className="todo-item">
-      <div>
+      {signedImage && <img src={signedImage} alt={title} />}
+      <div className="textual-info">
         <h2>{title}</h2>
         <p>{description}</p>
       </div>

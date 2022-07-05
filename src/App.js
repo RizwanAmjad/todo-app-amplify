@@ -1,13 +1,14 @@
 import React, { useState } from "react"
 import { Route, Routes } from "react-router-dom"
 import { withAuthenticator } from "@aws-amplify/ui-react"
-import "@aws-amplify/ui-react/styles.css"
 
 import NavComponent from "./components/NavComponent"
 import TodosContext from "./context/TodosContext"
 import HomeRoute from "./routes/HomeRoute"
 import NewTodoRoute from "./routes/NewTodoRoute"
 import UpdateTodoRoute from "./routes/UpdateTodoRoute"
+
+import "@aws-amplify/ui-react/styles.css"
 
 function App({ user, signOut }) {
   const [todos, setTodos] = useState([])

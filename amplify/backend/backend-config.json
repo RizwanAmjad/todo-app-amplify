@@ -9,7 +9,9 @@
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 7
+              "apiKeyExpirationDays": 7,
+              "apiKeyExpirationDate": "2022-07-12T10:08:37.635Z",
+              "description": ""
             }
           },
           "additionalAuthenticationProviders": []
@@ -50,6 +52,22 @@
       "service": "S3",
       "providerPlugin": "awscloudformation",
       "dependsOn": []
+    }
+  },
+  "function": {
+    "todocountlambda": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "api",
+          "resourceName": "todoappamplify",
+          "attributes": [
+            "GraphQLAPIIdOutput"
+          ]
+        }
+      ]
     }
   }
 }

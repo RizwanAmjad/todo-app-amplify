@@ -52,7 +52,6 @@ function HomeRoute(props) {
             key={index}
             title={todo.title}
             description={todo.description}
-            // image={`https://todoappamplifyc2696e2180b24eac9a2be3fb24058e26105435-dev.s3.amazonaws.com/public/${todo.image}`}
             image={todo.image}
             onDelete={() => handleDelete(index, todo)}
             onUpdate={() => handleUpdate(index)}

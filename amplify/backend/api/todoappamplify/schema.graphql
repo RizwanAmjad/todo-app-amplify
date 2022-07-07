@@ -7,6 +7,11 @@ type Todo @model {
   id: ID!
   title: String
   description: String
-  user: String
+  user: String! @index(name: "todosByUser")
   image: String
+}
+
+type TodoCount @model {
+  userId: ID!
+  todoCount: Int!
 }

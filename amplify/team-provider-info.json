@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "todoappamplify7318b742": {}
+      },
+      "function": {
+        "todocountlambda": {
+          "deploymentBucketName": "amplify-todoappamplify-dev-105435-deployment",
+          "s3Key": "amplify-builds/todocountlambda-734e782f4e7879675663-build.zip"
+        }
       }
     }
   }

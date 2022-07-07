@@ -49,3 +49,45 @@ export const deleteTodo = /* GraphQL */ `
     }
   }
 `;
+export const createTodoCount = /* GraphQL */ `
+  mutation CreateTodoCount(
+    $input: CreateTodoCountInput!
+    $condition: ModelTodoCountConditionInput
+  ) {
+    createTodoCount(input: $input, condition: $condition) {
+      userId
+      todoCount
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateTodoCount = /* GraphQL */ `
+  mutation UpdateTodoCount(
+    $input: UpdateTodoCountInput!
+    $condition: ModelTodoCountConditionInput
+  ) {
+    updateTodoCount(input: $input, condition: $condition) {
+      userId
+      todoCount
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteTodoCount = /* GraphQL */ `
+  mutation DeleteTodoCount(
+    $input: DeleteTodoCountInput!
+    $condition: ModelTodoCountConditionInput
+  ) {
+    deleteTodoCount(input: $input, condition: $condition) {
+      userId
+      todoCount
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;

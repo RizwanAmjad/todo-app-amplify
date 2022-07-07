@@ -22,5 +22,13 @@ export type AmplifyDependentResourcesAttributes = {
             "BucketName": "string",
             "Region": "string"
         }
+    },
+    "function": {
+        "todocountlambda": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        }
     }
 }

@@ -40,3 +40,36 @@ export const onDeleteTodo = /* GraphQL */ `
     }
   }
 `;
+export const onCreateTodoCount = /* GraphQL */ `
+  subscription OnCreateTodoCount {
+    onCreateTodoCount {
+      userId
+      todoCount
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateTodoCount = /* GraphQL */ `
+  subscription OnUpdateTodoCount {
+    onUpdateTodoCount {
+      userId
+      todoCount
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteTodoCount = /* GraphQL */ `
+  subscription OnDeleteTodoCount {
+    onDeleteTodoCount {
+      userId
+      todoCount
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;

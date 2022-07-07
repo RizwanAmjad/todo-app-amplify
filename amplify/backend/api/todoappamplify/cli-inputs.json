@@ -6,7 +6,11 @@
     "gqlSchemaPath": "/home/rizwan/Amplify/todo-app-amplify/amplify/backend/api/todoappamplify/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
-      "expirationTime": 7
-    }
+      "expirationTime": 7,
+      "apiKeyExpirationDate": "2022-07-12T10:08:37.635Z",
+      "keyDescription": ""
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": []
   }
 }

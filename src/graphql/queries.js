@@ -34,3 +34,32 @@ export const listTodos = /* GraphQL */ `
     }
   }
 `;
+export const getTodoCount = /* GraphQL */ `
+  query GetTodoCount($id: ID!) {
+    getTodoCount(id: $id) {
+      userId
+      todoCount
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listTodoCounts = /* GraphQL */ `
+  query ListTodoCounts(
+    $filter: ModelTodoCountFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTodoCounts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        userId
+        todoCount
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;

@@ -18,7 +18,7 @@
       "function": {
         "todocountlambda": {
           "deploymentBucketName": "amplify-todoappamplify-dev-105435-deployment",
-          "s3Key": "amplify-builds/todocountlambda-734e782f4e7879675663-build.zip"
+          "s3Key": "amplify-builds/todocountlambda-374345634e6e49343734-build.zip"
         }
       }
     }

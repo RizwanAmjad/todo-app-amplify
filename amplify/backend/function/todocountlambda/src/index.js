@@ -24,8 +24,9 @@ exports.handler = async (event) => {
     ExpressionAttributeValues: {
       ":this_user": user,
     },
-    FilterExpression: "userId = :this_user",
-    // ExpressionAttributeNames: { "userId": "user" },
+    KeyConditionExpression: "userId = :this_user",
+    ProjectionExpression: "id, userId, todoCount",
+    FilterExpression: "contains (userId, :this_user)",
     TableName: process.env.API_TODOAPPAMPLIFY_TODOCOUNTTABLE_NAME,
   }
 
@@ -41,7 +42,7 @@ exports.handler = async (event) => {
       TableName: process.env.API_TODOAPPAMPLIFY_TODOCOUNTTABLE_NAME,
       UpdateExpression: "set todoCount = :r",
       ExpressionAttributeValues: {
-        ":r": Items[0].count + todoCount,
+        ":r": Items[0].todoCount + todoCount,
       },
     }
 
@@ -53,7 +54,7 @@ exports.handler = async (event) => {
       Item: {
         id: AWS.util.uuid.v4(),
         userId: user,
-        count: 1,
+        todoCount: 1,
       },
     }
 

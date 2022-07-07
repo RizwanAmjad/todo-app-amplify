@@ -30,7 +30,7 @@ exports.handler = async (event) => {
     TableName: process.env.API_TODOAPPAMPLIFY_TODOCOUNTTABLE_NAME,
   }
 
-  const { Items } = await docClient.scan(params).promise()
+  const { Items } = await docClient.query(params).promise()
   console.log(Items)
 
   if (Items.length) {
